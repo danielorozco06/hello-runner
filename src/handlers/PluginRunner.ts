@@ -3,15 +3,9 @@ import { PluginInstance, PluginInstanceInfo } from '@df/sdk';
 import { sayHello } from '../operation/operation';
 
 interface Body {
-  pluginName: string;
-  version: string;
-  provider: string;
-  inputs: {
-    name: string;
-  };
-  isAsync: string;
-  entryPoint: string;
+  name: string;
 }
+
 class PluginRunner extends PluginInstance<any, any> {
   info(): PluginInstanceInfo {
     return {
@@ -26,7 +20,7 @@ class PluginRunner extends PluginInstance<any, any> {
 
   async execute(body: Body): Promise<any> {
     try {
-      return sayHello(body.inputs.name);
+      return sayHello(body.name);
     } catch (error) {
       const errorMessage = `Failed to execute ${PluginRunner.name}: ${(error as Error).message ?? error}`;
       console.log(errorMessage, error);
