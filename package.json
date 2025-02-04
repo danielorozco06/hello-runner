@@ -1,0 +1,20 @@
+{
+  "name": "@df/hello-world",
+  "version": "1.0.3",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist/"
+  },
+  "bundledDependencies": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@df/sdk": "^1.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}
