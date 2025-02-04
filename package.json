@@ -1,16 +1,16 @@
 {
-  "name": "@df/hello-world",
-  "version": "1.0.3",
+  "name": "@df/hello-runner",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf dist/"
+    "initialize": "npm run clean && npm run dependencies && npm run build && npm run publish",
+    "clean": "rm -rf dist/ node_modules/ package-lock.json && npm cache clean --force",
+    "dependencies": "npm i --verbose",
+    "build": "tsc && cp -f package.json dist/ && node scripts/prepare-publish.js && cd dist/ && npm i --omit-dev --verbose",
+    "publish": "npm publish ./dist",
+    "unpublish": "npm unpublish @df/hello-runner --force"
   },
   "bundledDependencies": true,
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@df/sdk": "^1.2.1"
   },

@@ -1,3 +1,3 @@
-import { HelloWorldPluginModule } from './lib';
+import PluginRunner from './handlers/PluginRunner';
 
-export default HelloWorldPluginModule;
+export default PluginRunner;
