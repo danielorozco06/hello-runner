@@ -1,4 +1,4 @@
-import { InternalPluginError, PluginInstance, PluginInstanceInfo } from '@df/sdk';
+import { PluginInstance, PluginInstanceInfo } from '@df/sdk';
 
 import { sayHello } from '../operation/operation';
 
@@ -16,14 +16,7 @@ class PluginRunner extends PluginInstance<any, any> {
 
   async execute(body: any): Promise<any> {
     try {
-      const response = sayHello(body);
-
-      const sucessfull = 200;
-      if (response.statusCode === sucessfull) {
-        return response.message;
-      } else {
-        throw new InternalPluginError(PluginRunner.name, response.message);
-      }
+      return sayHello(body);
     } catch (error) {
       const errorMessage = `Failed to execute ${PluginRunner.name}: ${(error as Error).message ?? error}`;
       console.log(errorMessage, error);
